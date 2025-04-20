@@ -14,21 +14,17 @@ VIDEOS = {
     "12345": "video_file_id_1",
     "67890": "video_file_id_2",
     "11111": "video_file_id_3",
-    # Add more codes and video IDs as needed
 }
 
-WELCOME_VIDEO = "BAACAgUAAxkBAAO2aAUuV70plfqCFYHEzMAvpZ6FQ-cAAo4UAALtXSlUi5vY-S0FEE82BA"  # Your welcome video file_id
-
+# Use a direct URL for welcome message instead of video
 async def main():
     bot = Bot(token=API_TOKEN)
     dp = Dispatcher()
 
     @dp.message(CommandStart())
     async def start_handler(message: types.Message):
-        await message.answer_video(
-            video=WELCOME_VIDEO,
-            caption="Welcome! Please follow our channels to access the videos:"
-        )
+        # Start with a text message instead of video
+        await message.answer("Welcome! Please follow our channels to access the videos:")
         
         markup = InlineKeyboardMarkup(inline_keyboard=[
             [InlineKeyboardButton(text="Telegram Channel 📢", url=TELEGRAM_CHANNEL)],
@@ -46,30 +42,42 @@ async def main():
         try:
             member = await bot.get_chat_member(TELEGRAM_CHANNEL, user_id)
             if member.status in ['member', 'administrator', 'creator']:
-                await callback_query.message.answer(
-                    "Enter any of the following codes to access different videos:\n"
+                # Send as a new message instead of using the callback message
+                await bot.send_message(
+                    chat_id=callback_query.from_user.id,
+                    text="Enter any of the following codes to access different videos:\n"
+                         "1️⃣ First video: 12345\n"
+                         "2️⃣ Second video: 67890\n"
+                         "3️⃣ Third video: 11111"
                 )
             else:
-                await callback_query.message.answer("Siz hali obuna bo'lmagan siz")
-        except Exception:
-            await callback_query.message.answer("Siz hali obuna bo'lmagan siz")
+                await bot.send_message(
+                    chat_id=callback_query.from_user.id,
+                    text="Please subscribe to our channel first!"
+                )
+        except Exception as e:
+            await bot.send_message(
+                chat_id=callback_query.from_user.id,
+                text="Please subscribe to our channel first!"
+            )
         
         await callback_query.answer()
 
     @dp.message()
     async def handle_message(message: types.Message):
-        # Handle video messages to get file_id
         if message.video:
             file_id = message.video.file_id
             await message.reply(f"Video file_id: `{file_id}`", parse_mode="Markdown")
             return
             
-        # Handle text messages for code checking
         if message.text in VIDEOS:
-            await message.answer_video(
-                video=VIDEOS[message.text],
-                caption="Enjoy your video! 🎉"
-            )
+            try:
+                await message.answer_video(
+                    video=VIDEOS[message.text],
+                    caption="Enjoy your video! 🎉"
+                )
+            except Exception as e:
+                await message.answer("Sorry, this video is currently unavailable.")
         else:
             await message.answer("Incorrect code. Please try again.")
 
