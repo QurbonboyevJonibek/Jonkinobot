@@ -17,7 +17,7 @@ VIDEOS = {
     # Add more codes and video IDs as needed
 }
 
-WELCOME_VIDEO = "welcome_video_file_id"  # Your welcome video file_id
+WELCOME_VIDEO = "BAACAgUAAxkBAAO2aAUuV70plfqCFYHEzMAvpZ6FQ-cAAo4UAALtXSlUi5vY-S0FEE82BA"  # Your welcome video file_id
 
 async def main():
     bot = Bot(token=API_TOKEN)
@@ -48,9 +48,6 @@ async def main():
             if member.status in ['member', 'administrator', 'creator']:
                 await callback_query.message.answer(
                     "Enter any of the following codes to access different videos:\n"
-                    "1️⃣ First video: 12345\n"
-                    "2️⃣ Second video: 67890\n"
-                    "3️⃣ Third video: 11111"
                 )
             else:
                 await callback_query.message.answer("Siz hali obuna bo'lmagan siz")
