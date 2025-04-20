@@ -27,7 +27,7 @@ async def main():
         await message.answer("Welcome! Please follow our channels to access the videos:")
         
         markup = InlineKeyboardMarkup(inline_keyboard=[
-            [InlineKeyboardButton(text="Telegram Channel 📢", url=TELEGRAM_CHANNEL)],
+            [InlineKeyboardButton(text=" 📢", url=TELEGRAM_CHANNEL)],
             [InlineKeyboardButton(text="YouTube Channel 🎥", url=YOUTUBE_LINK)],
             [InlineKeyboardButton(text="Instagram Page 📸", url=INSTAGRAM_LINK)],
             [InlineKeyboardButton(text="Check Subscription ✅", callback_data="check_sub")]
