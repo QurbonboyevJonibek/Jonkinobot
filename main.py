@@ -11,7 +11,7 @@ async def main():
 
     @dp.message(CommandStart())
     async def start_handler(message: types.Message):
-        await message.answer("Salom! Bu sinov uchun bot.")
+        await message.answer("Salom!.")
 
     try:
         await dp.start_polling(bot)
