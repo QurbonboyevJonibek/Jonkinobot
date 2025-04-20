@@ -6,7 +6,7 @@ from aiogram.filters import CommandStart
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 API_TOKEN = "7542357877:AAEYHE6FL77W-VOJoVxqOrHVrn26S5nqABY"
-TELEGRAM_CHANNEL = "@your_channel"
+TELEGRAM_CHANNEL = "@it_is_maylife"
 YOUTUBE_LINK = "https://youtube.com/your_channel"
 INSTAGRAM_LINK = "https://instagram.com/your_account"
 CORRECT_CODE = "12345"  # Change this to your desired code
