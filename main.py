@@ -60,7 +60,14 @@ async def main():
         await callback_query.answer()
 
     @dp.message()
-    async def check_code(message: types.Message):
+    async def handle_message(message: types.Message):
+        # Handle video messages to get file_id
+        if message.video:
+            file_id = message.video.file_id
+            await message.reply(f"Video file_id: `{file_id}`", parse_mode="Markdown")
+            return
+            
+        # Handle text messages for code checking
         if message.text in VIDEOS:
             await message.answer_video(
                 video=VIDEOS[message.text],
