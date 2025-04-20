@@ -41,28 +41,20 @@ async def main():
         user_id = callback_query.from_user.id
         
         try:
-            member = await bot.get_chat_member(TELEGRAM_CHANNEL, user_id)
+            member = await bot.get_chat_member(f"@{TELEGRAM_CHANNEL}", user_id)
             if member.status in ['member', 'administrator', 'creator']:
-                # Send as a new message instead of using the callback message
-                await bot.send_message(
-                    chat_id=callback_query.from_user.id,
-                    text="Enter any of the following codes to access different videos:\n"
-                         "1️⃣ First video: 12345\n"
-                         "2️⃣ Second video: 67890\n"
-                         "3️⃣ Third video: 11111"
+                await callback_query.answer("Subscription verified!")
+                await callback_query.message.edit_text(
+                    "Enter any of the following codes to access different videos:\n"
+                    "1️⃣ First video: 12345\n"
+                    "2️⃣ Second video: 67890\n"
+                    "3️⃣ Third video: 11111"
                 )
             else:
-                await bot.send_message(
-                    chat_id=callback_query.from_user.id,
-                    text="Please subscribe to our channel first!"
-                )
+                await callback_query.answer("Please subscribe first!", show_alert=True)
         except Exception as e:
-            await bot.send_message(
-                chat_id=callback_query.from_user.id,
-                text="Please subscribe to our channel first!"
-            )
-        
-        await callback_query.answer()
+            print(f"Error checking subscription: {e}")
+            await callback_query.answer("Please subscribe to our channel first!", show_alert=True)
 
     @dp.message()
     async def handle_message(message: types.Message):
