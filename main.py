@@ -5,7 +5,8 @@ from aiogram.filters import CommandStart
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 API_TOKEN = "7542357877:AAEYHE6FL77W-VOJoVxqOrHVrn26S5nqABY"
-TELEGRAM_CHANNEL = "@it_is_maylife"
+TELEGRAM_CHANNEL = "it_is_maylife"  # Channel username without @
+TELEGRAM_CHANNEL_URL = "https://t.me/it_is_maylife"  # Full URL for button
 YOUTUBE_LINK = "https://youtube.com/your_channel"
 INSTAGRAM_LINK = "https://instagram.com/your_account"
 
@@ -27,7 +28,7 @@ async def main():
         await message.answer("Welcome! Please follow our channels to access the videos:")
         
         markup = InlineKeyboardMarkup(inline_keyboard=[
-            [InlineKeyboardButton(text=" 📢", url=TELEGRAM_CHANNEL)],
+            [InlineKeyboardButton(text="Telegram Channel 📢", url=TELEGRAM_CHANNEL_URL)],
             [InlineKeyboardButton(text="YouTube Channel 🎥", url=YOUTUBE_LINK)],
             [InlineKeyboardButton(text="Instagram Page 📸", url=INSTAGRAM_LINK)],
             [InlineKeyboardButton(text="Check Subscription ✅", callback_data="check_sub")]
