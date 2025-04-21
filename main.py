@@ -7,14 +7,14 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 API_TOKEN = "7542357877:AAEYHE6FL77W-VOJoVxqOrHVrn26S5nqABY"
 TELEGRAM_CHANNEL = "it_is_maylife"  # Channel username without @
 TELEGRAM_CHANNEL_URL = "https://t.me/it_is_maylife"  # Full URL for button
-YOUTUBE_LINK = "https://youtube.com/your_channel"
+#YOUTUBE_LINK = "https://youtube.com/your_channel"
 INSTAGRAM_LINK = "https://instagram.com/your_account"
 
 # Dictionary of video IDs and their corresponding codes
 VIDEOS = {
     "12345": "BAACAgUAAxkBAAO4aAU0U7yegniUZVei55tmCT_zXSYAAtIcAAKwRShU6ByfaHOR7uM2BA",
-    "67890": "video_file_id_2",
-    "11111": "video_file_id_3",
+    "2010" : "BAACAgUAAxkBAAO-aAU67JlEFvDkTt5X-HrEkMsdCOIAAqYUAALtXSlUOZ5D2Z365T02BA",
+    "2011": "BAACAgUAAxkBAAO-aAU67JlEFvDkTt5X-HrEkMsdCOIAAqYUAALtXSlUOZ5D2Z365T02BA",
 }
 
 # Use a direct URL for welcome message instead of video
@@ -29,7 +29,7 @@ async def main():
         
         markup = InlineKeyboardMarkup(inline_keyboard=[
             [InlineKeyboardButton(text="Telegram Channel 📢", url=TELEGRAM_CHANNEL_URL)],
-            [InlineKeyboardButton(text="YouTube Channel 🎥", url=YOUTUBE_LINK)],
+           # [InlineKeyboardButton(text="YouTube Channel 🎥", url=YOUTUBE_LINK)],
             [InlineKeyboardButton(text="Instagram Page 📸", url=INSTAGRAM_LINK)],
             [InlineKeyboardButton(text="Check Subscription ✅", callback_data="check_sub")]
         ])
@@ -46,9 +46,9 @@ async def main():
                 await callback_query.answer("Subscription verified!")
                 await callback_query.message.edit_text(
                     "Enter any of the following codes to access different videos:\n"
-                    "1️⃣ First video: 12345\n"
-                    "2️⃣ Second video: 67890\n"
-                    "3️⃣ Third video: 11111"
+                    ""
+                    ""
+                    ""
                 )
             else:
                 await callback_query.answer("Please subscribe first!", show_alert=True)
