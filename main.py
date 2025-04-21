@@ -44,12 +44,21 @@ async def main():
             member = await bot.get_chat_member(f"@{TELEGRAM_CHANNEL}", user_id)
             if member.status in ['member', 'administrator', 'creator']:
                 await callback_query.answer("Subscription verified!")
-                await callback_query.message.edit_text(
-                    "Enter any of the following codes to access different videos:\n"
-                    ""
-                    ""
-                    ""
-                )
+                try:
+                    await callback_query.message.edit_text(
+                        "Enter any of the following codes to access different videos:\n"
+                        "12345 - Video 1\n"
+                        "2010 - Video 2\n"
+                        "2011 - Video 3"
+                    )
+                except:
+                    await bot.send_message(
+                        callback_query.from_user.id,
+                        "Enter any of the following codes to access different videos:\n"
+                        "12345 - Video 1\n"
+                        "2010 - Video 2\n"
+                        "2011 - Video 3"
+                    )
             else:
                 await callback_query.answer("Please subscribe first!", show_alert=True)
         except Exception as e:
