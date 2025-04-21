@@ -46,18 +46,12 @@ async def main():
                 await callback_query.answer("Subscription verified!")
                 try:
                     await callback_query.message.edit_text(
-                        "Enter any of the following codes to access different videos:\n"
-                        "12345 - Video 1\n"
-                        "2010 - Video 2\n"
-                        "2011 - Video 3"
+                        "Please enter the video code to access your content."
                     )
                 except:
                     await bot.send_message(
                         callback_query.from_user.id,
-                        "Enter any of the following codes to access different videos:\n"
-                        "12345 - Video 1\n"
-                        "2010 - Video 2\n"
-                        "2011 - Video 3"
+                        "Please enter the video code to access your content."
                     )
             else:
                 await callback_query.answer("Please subscribe first!", show_alert=True)
