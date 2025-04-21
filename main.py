@@ -47,9 +47,9 @@ async def main():
                 try:
                     await callback_query.message.edit_text(
                         "Enter any of the following codes to access different videos:\n"
-                        ""
-                        ""
-                        ""
+                        "12345 - Video 1\n"
+                        "2010 - Video 2\n"
+                        "2011 - Video 3"
                     )
                 except:
                     await bot.send_message(
