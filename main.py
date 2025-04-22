@@ -1,93 +1,64 @@
 
-import asyncio
-from aiogram import Bot, Dispatcher, types
-from aiogram.filters import CommandStart
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from flask import Flask, render_template_string
 
-API_TOKEN = "7542357877:AAEYHE6FL77W-VOJoVxqOrHVrn26S5nqABY"
-TELEGRAM_CHANNEL = "it_is_maylife"  # Channel username without @
-TELEGRAM_CHANNEL_URL = "https://t.me/it_is_maylife"  # Full URL for button
-#YOUTUBE_LINK = "https://youtube.com/your_channel"
-INSTAGRAM_LINK = "https://www.instagram.com/jonkino2025?igsh=MXJ5bXdxb3MzOHZseQ=="
+app = Flask(__name__)
 
-# Dictionary of video IDs and their corresponding codes
-VIDEOS = {
-    "2010": "BAACAgUAAxkBAAO8aAU6cv7_a-2NVRLoKsC1kWNztzEAAhUWAAICaslXuiQzgntowsQ2BA",
-    "2011": "BAACAgUAAxkBAAO-aAU67JlEFvDkTt5X-HrEkMsdCOIAAqYUAALtXSlUOZ5D2Z365T02BA",
-    "2012": "BAACAgUAAxkBAAPEaAYlQmxNmoAsVZa7QNmorjBJ4fsAArwcAAJNEzFUyC0ceuww1YM2BA",
-}
+# HTML template with mobile-first design
+template = '''
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Optimized App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            padding: 1rem;
+            max-width: 100%;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .card {
+            background: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 0.5rem;
+            }
+            .card {
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Mobile Optimized App</h1>
+            <p>This page is optimized for mobile devices with responsive design.</p>
+        </div>
+    </div>
+</body>
+</html>
+'''
 
-# Use a direct URL for welcome message instead of video
-async def main():
-    bot = Bot(token=API_TOKEN)
-    dp = Dispatcher()
+@app.route('/')
+def home():
+    return render_template_string(template)
 
-    @dp.message(CommandStart())
-    async def start_handler(message: types.Message):
-        # Start with a text message instead of video
-        await message.answer("Welcome! Please follow our channels to access the videos:")
-        
-        markup = InlineKeyboardMarkup(inline_keyboard=[
-            [InlineKeyboardButton(text="Telegram Channel 📢", url=TELEGRAM_CHANNEL_URL)],
-           # [InlineKeyboardButton(text="YouTube Channel 🎥", url=YOUTUBE_LINK)],
-            [InlineKeyboardButton(text="Instagram Page 📸", url=INSTAGRAM_LINK)],
-            [InlineKeyboardButton(text="Check Subscription ✅", callback_data="check_sub")]
-        ])
-        
-        await message.answer("Subscribe to our channels:", reply_markup=markup)
-
-    @dp.callback_query(lambda c: c.data == "check_sub")
-    async def check_subscription(callback_query: types.CallbackQuery):
-        user_id = callback_query.from_user.id
-        
-        try:
-            member = await bot.get_chat_member(f"@{TELEGRAM_CHANNEL}", user_id)
-            if member.status in ['member', 'administrator', 'creator']:
-                await callback_query.answer("Subscription verified!")
-                try:
-                    await callback_query.message.edit_text(
-                        "Please enter the video code to access your content."
-                    )
-                except:
-                    await bot.send_message(
-                        callback_query.from_user.id,
-                        "Please enter the video code to access your content."
-                    )
-            else:
-                await callback_query.answer("Please subscribe first!", show_alert=True)
-        except Exception as e:
-            print(f"Error checking subscription: {e}")
-            await callback_query.answer("Please subscribe to our channel first!", show_alert=True)
-
-    @dp.message()
-    async def handle_message(message: types.Message):
-        if message.video:
-            file_id = message.video.file_id
-            await message.reply(f"Video file_id: `{file_id}`", parse_mode="Markdown")
-            return
-            
-        if message.text in VIDEOS:
-            try:
-                await message.answer_video(
-                    video=VIDEOS[message.text],
-                    caption="Enjoy your video! 🎉"
-                )
-            except Exception as e:
-                await message.answer("Sorry, this video is currently unavailable.")
-        else:
-            await message.answer("Incorrect code. Please try again.")
-
-    try:
-        await dp.start_polling(bot)
-    finally:
-        await bot.session.close()
-
-if __name__ == "__main__":
-    while True:
-        try:
-            asyncio.run(main())
-        except Exception as e:
-            print(f"Bot crashed with error: {e}")
-            print("Restarting bot in 5 seconds...")
-            asyncio.sleep(5)
-            continue
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
