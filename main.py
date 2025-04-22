@@ -25,16 +25,16 @@ async def main():
     @dp.message(CommandStart())
     async def start_handler(message: types.Message):
         # Start with a text message instead of video
-        await message.answer("Welcome! Please follow our channels to access the videos:")
+        await message.answer("JonKINO botga xush kelibsiz!")
         
         markup = InlineKeyboardMarkup(inline_keyboard=[
             [InlineKeyboardButton(text="Telegram Channel 📢", url=TELEGRAM_CHANNEL_URL)],
            # [InlineKeyboardButton(text="YouTube Channel 🎥", url=YOUTUBE_LINK)],
             [InlineKeyboardButton(text="Instagram Page 📸", url=INSTAGRAM_LINK)],
-            [InlineKeyboardButton(text="Check Subscription ✅", callback_data="check_sub")]
+            [InlineKeyboardButton(text="Tekshirish ✅", callback_data="check_sub")]
         ])
         
-        await message.answer("Subscribe to our channels:", reply_markup=markup)
+        await message.answer("Kanallarga obuna bo'ling va \n Tekshirishni bosing:", reply_markup=markup)
 
     @dp.callback_query(lambda c: c.data == "check_sub")
     async def check_subscription(callback_query: types.CallbackQuery):
@@ -46,18 +46,18 @@ async def main():
                 await callback_query.answer("Subscription verified!")
                 try:
                     await callback_query.message.edit_text(
-                        "Please enter the video code to access your content."
+                        "Kino tomosha qilish uchun kodni kiriting."
                     )
                 except:
                     await bot.send_message(
                         callback_query.from_user.id,
-                        "Please enter the video code to access your content."
+                        "Kino kodini kiriting ."
                     )
             else:
-                await callback_query.answer("Please subscribe first!", show_alert=True)
+                await callback_query.answer("Avval obuna bo'ling!", show_alert=True)
         except Exception as e:
             print(f"Error checking subscription: {e}")
-            await callback_query.answer("Please subscribe to our channel first!", show_alert=True)
+            await callback_query.answer("Botdan foydalanish uchun avval obuna bo'ling!", show_alert=True)
 
     @dp.message()
     async def handle_message(message: types.Message):
@@ -70,12 +70,12 @@ async def main():
             try:
                 await message.answer_video(
                     video=VIDEOS[message.text],
-                    caption="Enjoy your video! 🎉"
+                    caption="Siz izlagan kod! 🎉"
                 )
             except Exception as e:
-                await message.answer("Sorry, this video is currently unavailable.")
+                await message.answer("Bu kod uchun video topilmadi. Iltimos, to'g'ri kodni kiriting.")
         else:
-            await message.answer("Incorrect code. Please try again.")
+            await message.answer("Noto'g'ri kod kiritdingiz. Iltimos, to'g'ri kodni kiriting.")
 
     try:
         await dp.start_polling(bot)

@@ -14,17 +14,6 @@ requiredFiles = [".replit", "replit.nix"]
 run = ["sh", "-c", "python main.py"]
 deploymentTarget = "cloudrun"
 
-[workflows]
-
-[[workflows.workflow]]
-name = "Run"
-author = 38369966
-mode = "sequential"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "python main.py"
-
 [[ports]]
 localPort = 5000
 externalPort = 80
