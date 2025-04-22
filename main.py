@@ -18,9 +18,9 @@ INSTAGRAM_LINK = "https://www.instagram.com/jonkino2025?igsh=MXJ5bXdxb3MzOHZseQ=
 # Dictionary of video IDs and their corresponding codes
 VIDEOS = {
     "2010": ("BAACAgUAAxkBAAPKaAe9F89cG1XWI_nJO5TJqS3PoowAAm4VAAII7jhX94XSAt2hKow2BA", "Shangchi 9 halqa filmi", "🎬 Film: Shangchi\n📅 Yil: 2021\n⭐️ IMDb: 7.4/10\n🎭 Janr: Fantastik, jangari\n🌍 Til: O'zbek tilida"),
-    "2011": ("BAACAgUAAxkBAAO6aAU6AjWE-6W9t4y-HtAiRrKVWEEAAlcVAAII7jhXBhjGljDHjfQ2BA", "Black Adam", "🎬 Film: Black Adam\n📅 Yil: 2022\n⭐️ IMDb: 6.3/10\n🎭 Janr: Fantastik, jangari\n🌍 Til: O'zbek tilida"),
-    "2012": ("BAACAgUAAxkBAAO8aAU6cv7_a-2NVRLoKsC1kWNztzEAAhUWAAICaslXuiQzgntowsQ2BA", "Avatar 2", "🎬 Film: Avatar: The Way of Water\n📅 Yil: 2022\n⭐️ IMDb: 7.6/10\n🎭 Janr: Fantastik\n🌍 Til: O'zbek tilida"),
-    "2013": ("BAACAgUAAxkBAAPNaAe_WdNzE7ShBDOaERXI84Dq2cEAAoYUAAII7kBXYDcYJ2iQPDs2BA", "Venom 2", "🎬 Film: Venom: Let There Be Carnage\n📅 Yil: 2021\n⭐️ IMDb: 5.9/10\n🎭 Janr: Fantastik\n🌍 Til: O'zbek tilida"),
+    "2011": ("BAACAgUAAxkBAAO6aAU6AjWE-6W9t4y-HtAiRrKVWEEAAlcVAAII7jhXBhjGljDHjfQ2BA", "Ayg'oqchi", "🎬 Film: jangari\n📅 Yil: 2022\n⭐️ IMDb: 6.3/10\n🎭 Janr: Fantastik, jangari\n🌍 Til: O'zbek tilida"),
+    "2012": ("BAACAgUAAxkBAAO8aAU6cv7_a-2NVRLoKsC1kWNztzEAAhUWAAICaslXuiQzgntowsQ2BA", "Yovuzlik maskani 1", "🎬 Film: ujas: \n📅 Yil: 2022\n⭐️ IMDb: 7.6/10\n🎭 Janr: Ujas, Fantastik\n🌍 Til: O'zbek tilida"),
+    "2013": ("BAACAgUAAxkBAAPNaAe_WdNzE7ShBDOaERXI84Dq2cEAAoYUAAII7kBXYDcYJ2iQPDs2BA", "Neja 1", "🎬 Film: Multik: Nejaning tug'ulishi\n📅 Yil: 2021\n⭐️ IMDb: 7.1/10\n🎭 Janr: Fantastik\n🌍 Til: O'zbek tilida"),
     "201": ("", "", ""),
 }
 
