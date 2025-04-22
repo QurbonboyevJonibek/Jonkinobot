@@ -17,11 +17,11 @@ INSTAGRAM_LINK = "https://www.instagram.com/jonkino2025?igsh=MXJ5bXdxb3MzOHZseQ=
 
 # Dictionary of video IDs and their corresponding codes
 VIDEOS = {
-    "2010": ("BAACAgUAAxkBAAPKaAe9F89cG1XWI_nJO5TJqS3PoowAAm4VAAII7jhX94XSAt2hKow2BA", "Siz izlagan kino", "Shangchi 9 halqa filmi"),
-    "2011": ("BAACAgUAAxkBAAO6aAU6AjWE-6W9t4y-HtAiRrKVWEEAAlcVAAII7jhXBhjGljDHjfQ2BA", "Black Adam"),
-    "2012": ("BAACAgUAAxkBAAO8aAU6cv7_a-2NVRLoKsC1kWNztzEAAhUWAAICaslXuiQzgntowsQ2BA", "Avatar 2"),
-    "2013": ("BAACAgUAAxkBAAPNaAe_WdNzE7ShBDOaERXI84Dq2cEAAoYUAAII7kBXYDcYJ2iQPDs2BA", "Venom 2"),
-    "201": ("", ""),
+    "2010": ("BAACAgUAAxkBAAPKaAe9F89cG1XWI_nJO5TJqS3PoowAAm4VAAII7jhX94XSAt2hKow2BA", "Shangchi 9 halqa filmi", "🎬 Film: Shangchi\n📅 Yil: 2021\n⭐️ IMDb: 7.4/10\n🎭 Janr: Fantastik, jangari\n🌍 Til: O'zbek tilida"),
+    "2011": ("BAACAgUAAxkBAAO6aAU6AjWE-6W9t4y-HtAiRrKVWEEAAlcVAAII7jhXBhjGljDHjfQ2BA", "Black Adam", "🎬 Film: Black Adam\n📅 Yil: 2022\n⭐️ IMDb: 6.3/10\n🎭 Janr: Fantastik, jangari\n🌍 Til: O'zbek tilida"),
+    "2012": ("BAACAgUAAxkBAAO8aAU6cv7_a-2NVRLoKsC1kWNztzEAAhUWAAICaslXuiQzgntowsQ2BA", "Avatar 2", "🎬 Film: Avatar: The Way of Water\n📅 Yil: 2022\n⭐️ IMDb: 7.6/10\n🎭 Janr: Fantastik\n🌍 Til: O'zbek tilida"),
+    "2013": ("BAACAgUAAxkBAAPNaAe_WdNzE7ShBDOaERXI84Dq2cEAAoYUAAII7kBXYDcYJ2iQPDs2BA", "Venom 2", "🎬 Film: Venom: Let There Be Carnage\n📅 Yil: 2021\n⭐️ IMDb: 5.9/10\n🎭 Janr: Fantastik\n🌍 Til: O'zbek tilida"),
+    "201": ("", "", ""),
 }
 
 # Use a direct URL for welcome message instead of video
@@ -93,11 +93,11 @@ async def main():
             
         if message.text in VIDEOS:
             try:
-                video_id, video_name = VIDEOS[message.text]
+                video_id, video_name, video_info = VIDEOS[message.text]
                 if video_id:
                     await message.answer_video(
                         video=video_id,
-                        caption=f"{video_name} 🎉"
+                        caption=f"{video_info}\n\n@JonGAME_1 - Rasmiy kanal"
                     )
             except Exception as e:
                 await message.answer("Bu kod uchun video topilmadi. Iltimos, to'g'ri kodni kiriting.")
