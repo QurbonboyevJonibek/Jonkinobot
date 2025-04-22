@@ -17,11 +17,11 @@ INSTAGRAM_LINK = "https://www.instagram.com/jonkino2025?igsh=MXJ5bXdxb3MzOHZseQ=
 
 # Dictionary of video IDs and their corresponding codes
 VIDEOS = {
-    "2010": "BAACAgUAAxkBAAPKaAe9F89cG1XWI_nJO5TJqS3PoowAAm4VAAII7jhX94XSAt2hKow2BA", "Shangchi 9 halqa film"
-    "2011": "BAACAgUAAxkBAAO6aAU6AjWE-6W9t4y-HtAiRrKVWEEAAlcVAAII7jhXBhjGljDHjfQ2BA",
-    "2012": "BAACAgUAAxkBAAO8aAU6cv7_a-2NVRLoKsC1kWNztzEAAhUWAAICaslXuiQzgntowsQ2BA",
-    "2013": "BAACAgUAAxkBAAPNaAe_WdNzE7ShBDOaERXI84Dq2cEAAoYUAAII7kBXYDcYJ2iQPDs2BA",
-    "201": "",
+    "2010": ("BAACAgUAAxkBAAPKaAe9F89cG1XWI_nJO5TJqS3PoowAAm4VAAII7jhX94XSAt2hKow2BA", "Shangchi 9 halqa film"),
+    "2011": ("BAACAgUAAxkBAAO6aAU6AjWE-6W9t4y-HtAiRrKVWEEAAlcVAAII7jhXBhjGljDHjfQ2BA", "Black Adam"),
+    "2012": ("BAACAgUAAxkBAAO8aAU6cv7_a-2NVRLoKsC1kWNztzEAAhUWAAICaslXuiQzgntowsQ2BA", "Avatar 2"),
+    "2013": ("BAACAgUAAxkBAAPNaAe_WdNzE7ShBDOaERXI84Dq2cEAAoYUAAII7kBXYDcYJ2iQPDs2BA", "Venom 2"),
+    "201": ("", ""),
 }
 
 # Use a direct URL for welcome message instead of video
@@ -93,10 +93,12 @@ async def main():
             
         if message.text in VIDEOS:
             try:
-                await message.answer_video(
-                    video=VIDEOS[message.text],
-                    caption="Siz izlagan kino! 🎉"
-                )
+                video_id, video_name = VIDEOS[message.text]
+                if video_id:
+                    await message.answer_video(
+                        video=video_id,
+                        caption=f"{video_name} 🎉"
+                    )
             except Exception as e:
                 await message.answer("Bu kod uchun video topilmadi. Iltimos, to'g'ri kodni kiriting.")
         else:
