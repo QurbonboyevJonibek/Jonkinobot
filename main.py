@@ -8,11 +8,13 @@ API_TOKEN = "7542357877:AAEYHE6FL77W-VOJoVxqOrHVrn26S5nqABY"
 TELEGRAM_CHANNEL = "it_is_maylife"  # Channel username without @
 TELEGRAM_CHANNEL_URL = "https://t.me/it_is_maylife"  # Full URL for button
 #YOUTUBE_LINK = "https://youtube.com/your_channel"
-INSTAGRAM_LINK = "https://instagram.com/your_account"
+INSTAGRAM_LINK = "https://www.instagram.com/jonkino2025?igsh=MXJ5bXdxb3MzOHZseQ=="
 
 # Dictionary of video IDs and their corresponding codes
 VIDEOS = {
-    "12345": "BAACAgUAAxkBAAO4aAU0U7yegniUZVei55tmCT_zXSYAAtIcAAKwRShU6ByfaHOR7uM2BA",
+    "2010": "BAACAgUAAxkBAAO8aAU6cv7_a-2NVRLoKsC1kWNztzEAAhUWAAICaslXuiQzgntowsQ2BA",
+    "2011": "BAACAgUAAxkBAAO-aAU67JlEFvDkTt5X-HrEkMsdCOIAAqYUAALtXSlUOZ5D2Z365T02BA",
+    "2012": "BAACAgUAAxkBAAPEaAYlQmxNmoAsVZa7QNmorjBJ4fsAArwcAAJNEzFUyC0ceuww1YM2BA",
 }
 
 # Use a direct URL for welcome message instead of video
