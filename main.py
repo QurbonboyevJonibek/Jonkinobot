@@ -96,8 +96,18 @@ async def main():
 if __name__ == "__main__":
     while True:
         try:
+            print("Starting bot...")
             asyncio.run(main())
         except Exception as e:
             print(f"Bot crashed with error: {e}")
             print("Restarting bot in 5 seconds...")
-            asyncio.run(asyncio.sleep(5))  # Properly handle async sleep
+            try:
+                # Handle different types of errors
+                if isinstance(e, (ConnectionError, TimeoutError)):
+                    print("Connection error detected, waiting for internet...")
+                asyncio.run(asyncio.sleep(5))
+            except Exception:
+                # If asyncio.run fails, use regular sleep
+                import time
+                time.sleep(5)
+        print("Restarting bot...")
