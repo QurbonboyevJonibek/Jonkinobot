@@ -89,5 +89,4 @@ if __name__ == "__main__":
         except Exception as e:
             print(f"Bot crashed with error: {e}")
             print("Restarting bot in 5 seconds...")
-            asyncio.sleep(5)
-            continue
+            asyncio.run(asyncio.sleep(5))  # Properly handle async sleep
