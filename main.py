@@ -6,20 +6,22 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 API_TOKEN = "7542357877:AAEYHE6FL77W-VOJoVxqOrHVrn26S5nqABY"
 TELEGRAM_CHANNEL1 = "it_is_maylife"  # Channel username without @
-TELEGRAM_CHANNEL2 = "channel2"  # Replace with your second channel
-TELEGRAM_CHANNEL3 = "channel3"  # Replace with your third channel
+TELEGRAM_CHANNEL2 = "JonGAME_1"  # Replace with your second channel
+TELEGRAM_CHANNEL3 = "JonGAMEchat_1"  # Replace with your third channel
 
 TELEGRAM_CHANNEL1_URL = "https://t.me/it_is_maylife"
-TELEGRAM_CHANNEL2_URL = "https://t.me/channel2"  # Replace with actual URL
-TELEGRAM_CHANNEL3_URL = "https://t.me/channel3"  # Replace with actual URL
+TELEGRAM_CHANNEL2_URL = "https://t.me/JonGAME_1"  # Replace with actual URL
+TELEGRAM_CHANNEL3_URL = "https://t.me/JonGAMEchat_1"  # Replace with actual URL
 
 INSTAGRAM_LINK = "https://www.instagram.com/jonkino2025?igsh=MXJ5bXdxb3MzOHZseQ=="
 
 # Dictionary of video IDs and their corresponding codes
 VIDEOS = {
-    "2010": "BAACAgUAAxkBAAO8aAU6cv7_a-2NVRLoKsC1kWNztzEAAhUWAAICaslXuiQzgntowsQ2BA",
-    "2011": "BAACAgUAAxkBAAO-aAU67JlEFvDkTt5X-HrEkMsdCOIAAqYUAALtXSlUOZ5D2Z365T02BA",
-    "2012": "BAACAgUAAxkBAAPEaAYlQmxNmoAsVZa7QNmorjBJ4fsAArwcAAJNEzFUyC0ceuww1YM2BA",
+    "2010": "BAACAgUAAxkBAAPKaAe9F89cG1XWI_nJO5TJqS3PoowAAm4VAAII7jhX94XSAt2hKow2BA",
+    "2011": "BAACAgUAAxkBAAO6aAU6AjWE-6W9t4y-HtAiRrKVWEEAAlcVAAII7jhXBhjGljDHjfQ2BA",
+    "2012": "BAACAgUAAxkBAAO8aAU6cv7_a-2NVRLoKsC1kWNztzEAAhUWAAICaslXuiQzgntowsQ2BA",
+    "2013": "BAACAgUAAxkBAAPNaAe_WdNzE7ShBDOaERXI84Dq2cEAAoYUAAII7kBXYDcYJ2iQPDs2BA",
+    "201": "BAACAgUAAxkBAAPEaAYlQmxNmoAsVZa7QNmorjBJ4fsAArwcAAJNEzFUyC0ceuww1YM2BA",
 }
 
 # Use a direct URL for welcome message instead of video
@@ -36,7 +38,7 @@ async def main():
             [InlineKeyboardButton(text="Telegram Channel 1 📢", url=TELEGRAM_CHANNEL1_URL)],
             [InlineKeyboardButton(text="Telegram Channel 2 📢", url=TELEGRAM_CHANNEL2_URL)],
             [InlineKeyboardButton(text="Telegram Channel 3 📢", url=TELEGRAM_CHANNEL3_URL)],
-            [InlineKeyboardButton(text="Instagram Page 📸", url=INSTAGRAM_LINK)],
+            [InlineKeyboardButton(text="Instagram 📸", url=INSTAGRAM_LINK)],
             [InlineKeyboardButton(text="Tekshirish ✅", callback_data="check_sub")]
         ])
         
