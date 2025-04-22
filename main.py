@@ -5,6 +5,10 @@ from aiogram.filters import CommandStart
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 API_TOKEN = "7542357877:AAEYHE6FL77W-VOJoVxqOrHVrn26S5nqABY"
+
+# Track verified users
+verified_users = set()
+
 TELEGRAM_CHANNEL1 = "it_is_maylife"  # Channel username without @
 TELEGRAM_CHANNEL2 = "JonGAME_1"  # Replace with your second channel
 TELEGRAM_CHANNEL3 = "JonGAMEchat_1"  # Replace with your third channel
@@ -63,6 +67,7 @@ async def main():
         )
 
         if all(is_subscribed):
+            verified_users.add(user_id)
             markup = InlineKeyboardMarkup(inline_keyboard=[
                 [InlineKeyboardButton(text="Kodni kiriting ✍️", callback_data="enter_code")]
             ])
@@ -89,6 +94,16 @@ async def main():
         if message.video:
             file_id = message.video.file_id
             await message.reply(f"Video file_id: `{file_id}`", parse_mode="Markdown")
+            return
+            
+        if message.from_user.id not in verified_users:
+            markup = InlineKeyboardMarkup(inline_keyboard=[
+                [InlineKeyboardButton(text="Telegram Channel 1 📢", url=TELEGRAM_CHANNEL1_URL)],
+                [InlineKeyboardButton(text="Telegram Channel 2 📢", url=TELEGRAM_CHANNEL2_URL)],
+                [InlineKeyboardButton(text="Telegram Channel 3 📢", url=TELEGRAM_CHANNEL3_URL)],
+                [InlineKeyboardButton(text="Tekshirish ✅", callback_data="check_sub")]
+            ])
+            await message.answer("Iltimos, avval kanallarga obuna bo'ling va tekshirish tugmasini bosing!", reply_markup=markup)
             return
             
         if message.text in VIDEOS:
