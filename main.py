@@ -48,27 +48,41 @@ async def main():
     async def check_subscription(callback_query: types.CallbackQuery):
         user_id = callback_query.from_user.id
         
-        try:
-            member1 = await bot.get_chat_member(f"@{TELEGRAM_CHANNEL1}", user_id)
-            member2 = await bot.get_chat_member(f"@{TELEGRAM_CHANNEL2}", user_id)
-            member3 = await bot.get_chat_member(f"@{TELEGRAM_CHANNEL3}", user_id)
-            if all(member.status in ['member', 'administrator', 'creator'] 
-                  for member in [member1, member2, member3]):
-                await callback_query.answer("Subscription verified!")
-                try:
-                    await callback_query.message.edit_text(
-                        "Kino tomosha qilish uchun kodni kiriting."
-                    )
-                except:
-                    await bot.send_message(
-                        callback_query.from_user.id,
-                        "Kino kodini kiriting ."
-                    )
-            else:
-                await callback_query.answer("Avval obuna bo'ling!", show_alert=True)
-        except Exception as e:
-            print(f"Error checking subscription: {e}")
-            await callback_query.answer("Botdan foydalanish uchun avval obuna bo'ling!", show_alert=True)
+        async def check_member_status(channel):
+            try:
+                member = await bot.get_chat_member(f"@{channel}", user_id)
+                return member.status in ['member', 'administrator', 'creator']
+            except Exception as e:
+                print(f"Error checking {channel}: {e}")
+                return False
+
+        is_subscribed = await asyncio.gather(
+            check_member_status(TELEGRAM_CHANNEL1),
+            check_member_status(TELEGRAM_CHANNEL2),
+            check_member_status(TELEGRAM_CHANNEL3)
+        )
+
+        if all(is_subscribed):
+            markup = InlineKeyboardMarkup(inline_keyboard=[
+                [InlineKeyboardButton(text="Kodni kiriting ✍️", callback_data="enter_code")]
+            ])
+            await callback_query.message.edit_text(
+                "Tabriklaymiz! Endi kino kodini kiritishingiz mumkin.",
+                reply_markup=markup
+            )
+            await callback_query.answer("Obuna tekshirildi ✅", show_alert=True)
+        else:
+            markup = InlineKeyboardMarkup(inline_keyboard=[
+                [InlineKeyboardButton(text="Telegram Channel 1 📢", url=TELEGRAM_CHANNEL1_URL)],
+                [InlineKeyboardButton(text="Telegram Channel 2 📢", url=TELEGRAM_CHANNEL2_URL)],
+                [InlineKeyboardButton(text="Telegram Channel 3 📢", url=TELEGRAM_CHANNEL3_URL)],
+                [InlineKeyboardButton(text="Tekshirish ✅", callback_data="check_sub")]
+            ])
+            await callback_query.answer("Iltimos, barcha kanallarga obuna bo'ling! ❌", show_alert=True)
+            await callback_query.message.edit_text(
+                "Botdan foydalanish uchun quyidagi kanallarga obuna bo'ling:",
+                reply_markup=markup
+            )
 
     @dp.message()
     async def handle_message(message: types.Message):
