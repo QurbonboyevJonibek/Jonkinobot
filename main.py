@@ -21,7 +21,7 @@ VIDEOS = {
     "2011": "BAACAgUAAxkBAAO6aAU6AjWE-6W9t4y-HtAiRrKVWEEAAlcVAAII7jhXBhjGljDHjfQ2BA",
     "2012": "BAACAgUAAxkBAAO8aAU6cv7_a-2NVRLoKsC1kWNztzEAAhUWAAICaslXuiQzgntowsQ2BA",
     "2013": "BAACAgUAAxkBAAPNaAe_WdNzE7ShBDOaERXI84Dq2cEAAoYUAAII7kBXYDcYJ2iQPDs2BA",
-    "201": "BAACAgUAAxkBAAPEaAYlQmxNmoAsVZa7QNmorjBJ4fsAArwcAAJNEzFUyC0ceuww1YM2BA",
+    "201": "",
 }
 
 # Use a direct URL for welcome message instead of video
