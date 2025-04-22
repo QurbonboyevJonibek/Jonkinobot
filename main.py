@@ -17,7 +17,7 @@ INSTAGRAM_LINK = "https://www.instagram.com/jonkino2025?igsh=MXJ5bXdxb3MzOHZseQ=
 
 # Dictionary of video IDs and their corresponding codes
 VIDEOS = {
-    "2010": ("BAACAgUAAxkBAAPKaAe9F89cG1XWI_nJO5TJqS3PoowAAm4VAAII7jhX94XSAt2hKow2BA", "Shangchi 9 halqa film"),
+    "2010": ("BAACAgUAAxkBAAPKaAe9F89cG1XWI_nJO5TJqS3PoowAAm4VAAII7jhX94XSAt2hKow2BA", "Siz izlagan kino", "Shangchi 9 halqa filmi"),
     "2011": ("BAACAgUAAxkBAAO6aAU6AjWE-6W9t4y-HtAiRrKVWEEAAlcVAAII7jhXBhjGljDHjfQ2BA", "Black Adam"),
     "2012": ("BAACAgUAAxkBAAO8aAU6cv7_a-2NVRLoKsC1kWNztzEAAhUWAAICaslXuiQzgntowsQ2BA", "Avatar 2"),
     "2013": ("BAACAgUAAxkBAAPNaAe_WdNzE7ShBDOaERXI84Dq2cEAAoYUAAII7kBXYDcYJ2iQPDs2BA", "Venom 2"),
