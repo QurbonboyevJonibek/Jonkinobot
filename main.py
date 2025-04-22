@@ -5,9 +5,14 @@ from aiogram.filters import CommandStart
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 API_TOKEN = "7542357877:AAEYHE6FL77W-VOJoVxqOrHVrn26S5nqABY"
-TELEGRAM_CHANNEL = "it_is_maylife"  # Channel username without @
-TELEGRAM_CHANNEL_URL = "https://t.me/it_is_maylife"  # Full URL for button
-#YOUTUBE_LINK = "https://youtube.com/your_channel"
+TELEGRAM_CHANNEL1 = "it_is_maylife"  # Channel username without @
+TELEGRAM_CHANNEL2 = "channel2"  # Replace with your second channel
+TELEGRAM_CHANNEL3 = "channel3"  # Replace with your third channel
+
+TELEGRAM_CHANNEL1_URL = "https://t.me/it_is_maylife"
+TELEGRAM_CHANNEL2_URL = "https://t.me/channel2"  # Replace with actual URL
+TELEGRAM_CHANNEL3_URL = "https://t.me/channel3"  # Replace with actual URL
+
 INSTAGRAM_LINK = "https://www.instagram.com/jonkino2025?igsh=MXJ5bXdxb3MzOHZseQ=="
 
 # Dictionary of video IDs and their corresponding codes
@@ -28,8 +33,9 @@ async def main():
         await message.answer("JonKINO botga xush kelibsiz!")
         
         markup = InlineKeyboardMarkup(inline_keyboard=[
-            [InlineKeyboardButton(text="Telegram Channel 📢", url=TELEGRAM_CHANNEL_URL)],
-           # [InlineKeyboardButton(text="YouTube Channel 🎥", url=YOUTUBE_LINK)],
+            [InlineKeyboardButton(text="Telegram Channel 1 📢", url=TELEGRAM_CHANNEL1_URL)],
+            [InlineKeyboardButton(text="Telegram Channel 2 📢", url=TELEGRAM_CHANNEL2_URL)],
+            [InlineKeyboardButton(text="Telegram Channel 3 📢", url=TELEGRAM_CHANNEL3_URL)],
             [InlineKeyboardButton(text="Instagram Page 📸", url=INSTAGRAM_LINK)],
             [InlineKeyboardButton(text="Tekshirish ✅", callback_data="check_sub")]
         ])
@@ -41,8 +47,11 @@ async def main():
         user_id = callback_query.from_user.id
         
         try:
-            member = await bot.get_chat_member(f"@{TELEGRAM_CHANNEL}", user_id)
-            if member.status in ['member', 'administrator', 'creator']:
+            member1 = await bot.get_chat_member(f"@{TELEGRAM_CHANNEL1}", user_id)
+            member2 = await bot.get_chat_member(f"@{TELEGRAM_CHANNEL2}", user_id)
+            member3 = await bot.get_chat_member(f"@{TELEGRAM_CHANNEL3}", user_id)
+            if all(member.status in ['member', 'administrator', 'creator'] 
+                  for member in [member1, member2, member3]):
                 await callback_query.answer("Subscription verified!")
                 try:
                     await callback_query.message.edit_text(
