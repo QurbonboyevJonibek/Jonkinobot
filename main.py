@@ -27,7 +27,11 @@ VIDEOS = {
     "2011": ("BAACAgUAAxkBAAO6aAU6AjWE-6W9t4y-HtAiRrKVWEEAAlcVAAII7jhXBhjGljDHjfQ2BA", "Ayg'oqchi", "🎬 Film: jangari\n📅 Yil: 2022\n⭐️ IMDb: 6.3/10\n🎭 Janr: Fantastik, jangari\n🌍 Til: O'zbek tilida"),
     "2012": ("BAACAgUAAxkBAAO8aAU6cv7_a-2NVRLoKsC1kWNztzEAAhUWAAICaslXuiQzgntowsQ2BA", "Yovuzlik maskani 1", "🎬 Film: ujas: \n📅 Yil: 2022\n⭐️ IMDb: 7.6/10\n🎭 Janr: Ujas, Fantastik\n🌍 Til: O'zbek tilida"),
     "2013": ("BAACAgUAAxkBAAPNaAe_WdNzE7ShBDOaERXI84Dq2cEAAoYUAAII7kBXYDcYJ2iQPDs2BA", "Neja 1", "🎬 Film: Multik: Nejaning tug'ulishi\n📅 Yil: 2021\n⭐️ IMDb: 7.1/10\n🎭 Janr: Fantastik\n🌍 Til: O'zbek tilida"),
-    "201": ("", "", ""),
+    "2015": ("BAACAgUAAxkBAAPQaAj4AyxAV8QJpJwr9INkKuXXBX8AAkoXAALlNUlUR-RQnNWMrWk2BA", "Havo jangchilari", "🎬 Film: Havo jangchilari\n📅 Yil: 2020\n⭐️ IMDb: 7.1/10\n🎭 Janr: Fantastik , jangari\n🌍 Til: O'zbek tilida"),
+     "2016": ("BAACAgUAAxkBAAPSaAk6RzF9GTSHGt7R6grJvPzJCNUAAg4ZAAJlRkhUUb8anCkeIDw2BA","Jodu Saltanati 1-qism","🎬 Film: Jodu Saltanati 1-qism\n📅 Yil: 2018\n⭐️ IMDb: 6.3/10\n🎭 Janr: Fantastik\n🌍 Til: O'zbek tilida",),
+     "2017": ("BAACAgUAAxkBAAPTaAk7NZVWm22-oj5k2Qmc41Q2NcUAAg8ZAAJlRkhUNEL0XmIAAWMENgQ","Jodu Saltanati 2-qism","🎬 Film: Jodu Saltanati 2-qism\n📅 Yil: 2018\n⭐️ IMDb: 6.0/10\n🎭 Janr: Fantastik\n🌍 Til: O'zbek tilida"),
+     "2018": ("BAACAgUAAxkBAAPUaAk8TKRQD84Yhn3iFqjmFZd2lIcAAhAZAAJlRkhU-MAH_pgLAYA2BA","Jodu Saltanati 3-qism","🎬 Film: Jodu Saltanati 3-qism\n📅 Yil: 2018\n⭐️ IMDb: 6.7/10\n🎭 Janr: Fantastik\n🌍 Til: O'zbek tilida"),
+    
 }
 
 # Use a direct URL for welcome message instead of video
